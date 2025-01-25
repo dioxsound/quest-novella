@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-WTF
+psycopg2-binary
+Bootstrap-Flask
+python-dotenv

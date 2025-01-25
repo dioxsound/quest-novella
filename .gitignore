@@ -1,0 +1,50 @@
+# .gitignore
+
+# Файлы окружения и секреты
+.env
+*.env.local
+*.secret
+
+# Виртуальное окружение Python
+venv/
+env/
+.venv/
+pythonenv*
+
+# Кэш и скомпилированные файлы Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.temp
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Миграции
+migrations/
+
+# Загружаемые пользователем изображения
+static/images/*
+
+# TinyMCE кэш (если используется)
+.tinymce/
+
+# Тестовые данные
+test.db
+*.sqlite
+
+# Скомпилированные статические файлы
+*.css.map
+*.js.map

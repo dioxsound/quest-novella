@@ -1,0 +1,29 @@
+body {
+	background-color: #f8f9fa;
+	color: #212529;
+}
+
+.card img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: auto;
+	max-width: 800px;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+.card {
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+	background-color: #0d6efd;
+	border-color: #0d6efd;
+}
+
+.btn-secondary {
+	background-color: #6c757d;
+	border-color: #6c757d;
+}
