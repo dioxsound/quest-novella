@@ -9,37 +9,6 @@
     {% else %}
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     {% endif %}
-    <script src="https://cdn.tiny.cloud/1/{{ config.TINYMCE_API_KEY }}/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-      tinymce.init({
-        selector: '#text',
-        plugins: 'lists link image charmap preview',
-        toolbar: 'undo redo | formatselect | bold italic backcolor forecolor | \
-                  alignleft aligncenter alignright alignjustify | \
-                  bullist numlist outdent indent | removeformat | help',
-        menubar: false,
-        content_style: "{{ 'body { background-color: #1e1e1e; color: #e0e0e0; }' if dark_mode else 'body { background-color: #ffffff; color: #212529; }' }}",
-        init_instance_callback: function(editor) {
-          editor.on('blur', function(e) {
-            tinymce.triggerSave();
-          });
-        },
-        setup: function(editor) {
-          editor.on('change', function() {
-            tinymce.triggerSave();
-          });
-        }
-      });
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var form = document.querySelector('form');
-        if(form) {
-          form.addEventListener('submit', function(e) {
-            tinymce.triggerSave();
-          });
-        }
-      });
-    </script>
 </head>
 <body class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -70,6 +39,8 @@
                 </div>
             {% endif %}
         </div>
+        
+        
         <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
     </form>
 </body>

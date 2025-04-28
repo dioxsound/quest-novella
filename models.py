@@ -7,16 +7,15 @@ class Scenario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String(255), nullable=True)
     text = db.Column(db.Text, nullable=False)
-    
-    # Отношение для выборов, связанных с этим сценарием
+    is_start = db.Column(db.Boolean, default=False)  # НОВОЕ поле
+
     choices = db.relationship(
         'Choice',
         backref='parent_scenario',
         lazy=True,
         foreign_keys='Choice.scenario_id'
     )
-    
-    # Отношение для выборов, которые ссылаются на этот сценарий как следующий сценарий
+
     next_choices = db.relationship(
         'Choice',
         backref='next_scenario',
@@ -27,11 +26,6 @@ class Scenario(db.Model):
 class Choice(db.Model):
     __tablename__ = 'choices'
     id = db.Column(db.Integer, primary_key=True)
-    
-    # Внешний ключ на сценарий, к которому относится выбор
     scenario_id = db.Column(db.Integer, db.ForeignKey('scenarios.id'), nullable=False)
-    
-    # Внешний ключ на следующий сценарий (может быть NULL)
     next_scenario_id = db.Column(db.Integer, db.ForeignKey('scenarios.id'), nullable=True)
-    
     choice_text = db.Column(db.String(255), nullable=False)

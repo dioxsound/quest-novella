@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="{{ 'dark' if dark_mode else 'light' }}">
+<head>
+    <meta charset="UTF-8">
+    <title>Прохождение Игры</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% if dark_mode %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='dark_styles.css') }}">
+    {% else %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% endif %}
+</head>
+<body class="container mt-5">
+    <div class="card">
+        {% if scenario.image %}
+            <img src="{{ url_for('static', filename='images/' + scenario.image) }}" class="card-img-top" alt="Изображение">
+        {% endif %}
+        <div class="card-body">
+            <p class="card-text">{{ scenario.text | safe }}</p>
+            <div class="d-grid gap-2">
+                {% for choice in scenario.choices %}
+                    {% if choice.next_scenario_id %}
+                        <a href="{{ url_for('show_scenario', scenario_id=choice.next_scenario_id) }}" class="btn btn-primary">{{ choice.choice_text }}</a>
+                    {% else %}
+                        <button class="btn btn-primary" disabled>{{ choice.choice_text }} (Конец)</button>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
