@@ -12,6 +12,10 @@ body {
 	color: #e0e0e0;
 }
 
+.card-title {
+	color: #e0e0e0;
+}
+
 .card img {
 	display: block;
 	margin-left: auto;
